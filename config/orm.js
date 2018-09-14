@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-var connection = require("./connection.js");
 // Import MySQL connection.
 var connection = require("../config/connection.js");
 
@@ -82,6 +81,20 @@ var orm = {
     queryString += condition;
 
     console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

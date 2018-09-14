@@ -1,38 +1,59 @@
-<h1>Cats!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card" style="width: 35rem; height: 43rem; margin-top: 5rem; margin-bottom: 10rem">
+        <img class="card-img-top" src="https://media.giphy.com/media/KIJAvs9u2i2Ri/giphy.gif" style="width:35rem; height: 18rem;"
+          alt="Card image cap">
+        <div class="card-body">
+          <h1 class="card-title">Welcome to the krusty Krab!</h1>
+          <p class="card-text">What would you like to order?</p>
+          <form class="create-form">
 
-<h2>Cats that are not sleepy!</h2>
+            <div class="form-group">
+              <label for="cat">Burger Name:</label>
+              <input type="text" id="ca" name="name">
+            </div>
 
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+            <div class="form-group">
+              <label for="slee">Are you eating in?</label>
+              <br>
+              <input type="radio" name="devoured" value="0" checked> Eat in
+              <br>
+              <input type="radio" name="devoured" value="1"> Takeout
+            </div>
 
-<h2>Cats that are sleepy!</h2>
+            <button type="submit">Add Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card" style="width: 35rem; height: 55rem; margin-top: 5rem; margin-bottom: 10rem; margin-left: 3rem">
+        <img class="card-img-top" src="https://media.giphy.com/media/3ogwFMrgMHpxobrhh6/giphy.gif" style="width:35rem; height: 18rem;"
+          alt="Card image cap">
+        <div class="card-body">
+          <h1 class="card-title">Burgers: </h1>
+          <h2>Orders: </h2>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+          <ul>
+            {{#each burgers}} {{#unless devoured}} {{> block/burgers-BLOCK devoured=true}} {{/unless}} {{/each}}
+          </ul>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
+          <h2>Past Orders: </h2>
 
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+          <ul>
+            {{#each burgers}} {{#if devoured}} {{> block/burgers-BLOCK devoured=false}} {{/if}} {{/each}}
+          </ul>
+
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="/assets/js/burgers.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
